@@ -1,0 +1,12 @@
+{
+  "title": "Unified Loader options",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "use": {
+      "type": "array",
+      "description": "Plugins for unified.",
+      "link": "https://github.com/AlbinLindskog/webpack-unified-loader/#plugins"
+    }
+  }
+}

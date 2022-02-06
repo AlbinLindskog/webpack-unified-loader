@@ -1,0 +1,42 @@
+{
+  "name": "unified-loader",
+  "version": "1.0.0",
+  "description": "unified loader module for webpack",
+  "license": "MIT",
+  "repository": "github.com/AlbinLindskog/webpack-inified-loader",
+  "author": "Albin lindskog",
+  "main": "dist/cjs.js",
+  "engines": {
+    "node": ">= 12.13.0"
+  },
+  "scripts": {
+    "build": "babel src -d dist",
+    "test": "jest"
+  },
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "webpack": "^5.0.0",
+    "unified": "^10.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.7",
+    "@babel/core": "^7.16.7",
+    "@babel/preset-env": "^7.16.7",
+    "jest": "^27.4.5",
+    "memfs": "^3.4.1",
+    "webpack": "^5.65.0",
+    "unified": "^10.1.1"
+  },
+  "keywords": [
+    "webpack",
+    "loader",
+    "unified"
+  ],
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!unified|bail|is-plain-obj|trough|vfile|unist-util-stringify-position)"
+    ]
+  }
+}
