@@ -9,9 +9,15 @@
 A webpack loader allowing you to use the [unified](https://github.com/unifiedjs/unified) ecosystem in file
 transformations. 
 
+Webpack only supports CJS loaders, while unified v.10 dropped support for CJS. This loader manages the compatibility
+for you, allowing you to use any version of unified with webpack.
+
+This loader is also published as an ESM module, so when webpack adds support for ESM loaders will it work
+without any changes.
+
 ## Getting Started
 
-To begin, you'll need to install `val-loader`:
+To begin, you'll need to install `unified-loader`:
 
 ```console
 $ npm install --save git+https://github.com/AlbinLindskog/webpack-unified-loader.git
@@ -64,4 +70,15 @@ module.exports = {
 };
 ```
 
-TODO: Check version of unified it works with.
+## A note on the testing
+Jest have not fully implemented support for ESM is their runtime yet, in particular are dynamic imports, which this
+package uses to manage to compatability, broken. See [issue 35889](https://github.com/nodejs/node/issues/35889).
+ 
+As such I run the unit tests for the loader itself by transpiling loader.cjs (despite it already being a CJS file)
+with babel, and run the tests on that. This run also tests for CJS compatability.
+
+Compatability with ESM is tested by a subsequent run of jest in ESM-mode, which does not run the unit tests for the
+loader.
+
+I will revisit this when jest finish supports for ESM. Unless Webpack does it first, since that would remove the need
+for this loader. ¯\_(ツ)_/¯

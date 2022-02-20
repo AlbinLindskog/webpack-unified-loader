@@ -5,38 +5,46 @@
   "license": "MIT",
   "repository": "github.com/AlbinLindskog/webpack-inified-loader",
   "author": "Albin lindskog",
-  "main": "dist/cjs.js",
+  "main": "./src/index.cjs",
+  "module": "./src/index.mjs",
+  "types": "./src/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "require": "./src/index.cjs",
+      "import": "./src/index.mjs",
+      "types": "./src/index.d.ts"
+    }
+  },
   "engines": {
     "node": ">= 12.13.0"
   },
   "scripts": {
-    "build": "babel src -d dist",
-    "test": "jest"
+    "test-cjs": "cross-env TEST_MODE=cjs node node_modules/jest/bin/jest.js --no-cache",
+    "test-esm": "cross-env TEST_MODE=esm node --experimental-vm-modules node_modules/jest/bin/jest.js --no-cache",
+    "test": "npm run test-cjs && npm run test-esm"
   },
   "files": [
-    "dist"
+    "src"
   ],
   "peerDependencies": {
-    "webpack": "^5.0.0",
-    "unified": "^10.1.0"
+    "unified": "1 - 10",
+    "webpack": "1 - 10"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.7",
     "@babel/core": "^7.16.7",
     "@babel/preset-env": "^7.16.7",
+    "babel-plugin-inline-json-import": "^0.3.2",
+    "cross-env": "^7.0.3",
     "jest": "^27.4.5",
     "memfs": "^3.4.1",
-    "webpack": "^5.65.0",
-    "unified": "^10.1.1"
+    "unified": "^10.1.1",
+    "webpack": "^5.65.0"
   },
   "keywords": [
     "webpack",
     "loader",
     "unified"
-  ],
-  "jest": {
-    "transformIgnorePatterns": [
-      "node_modules/(?!unified|bail|is-plain-obj|trough|vfile|unist-util-stringify-position)"
-    ]
-  }
+  ]
 }
