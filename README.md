@@ -81,4 +81,4 @@ Compatability with ESM is tested by a subsequent run of jest in ESM-mode, which 
 loader.
 
 I will revisit this when jest finish supports for ESM. Unless Webpack does it first, since that would remove the need
-for this loader. ¯\_(ツ)_/¯
+for this loader. ¯\\_(ツ)_/¯
